@@ -60,6 +60,6 @@ null p1() {
 i32 main() {
 
     p1 call;
-2
+
     give 0;
 }
