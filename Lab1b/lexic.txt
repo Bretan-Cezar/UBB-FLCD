@@ -1,0 +1,46 @@
+Alphabet:
+
+a-z ; A-Z ; 0-9 ; _ 
+
+Lexic:
+
+    - Special symbols:
+
+        - Operators: 
+        
+                - Arithmetic: "+" ; "-" ; "*" ; "/" ; "**" ; "//" ; "%"
+                - Assignment: "=" 
+                - Relational: "==" ; "!=" ; "<" ; "<=" ; ">" ; ">=" 
+                - Logical: "||" ; "&&" 
+                - Comment markers: "<%" ; "%>"
+
+        - Separators: "{" ; "}" ; "[" ; "]" ; "(" ; ")" ; "," ; "\n" (newline) ; " " (space); "\t" (horizontal tab)
+
+        - Reserved words: i64, string, immut, if, else, while, clread, clwrite
+
+    - Ground rules:
+
+        - letter = "a"|"b"|...|"y"|"z"|"A"|"B"|...|"Y"|"Z"
+        - digit = "0"|"1"|"2"|...|"8"|"9"
+        - nz_digit = "1"|"2"|...|"8"|"9"
+        - sign = "+"|"-"
+
+        - symbols = "+" | "-" | "*" | "/" | "%" | "=" | "!" | "<" | ">" | "|" | "&" | "\" | "~" | "^" | "$" | "@" |
+                    "#" | ":" | ";" | "\"" | "'" | "?" | "(" | ")" | "{" | "}" | "[" | "]" | "(" | ")" | "," | "_"
+
+        - whitespaces = " " | "\n" | "\t"
+
+    - Identifiers:
+
+        - Length is at most 256 characters of the alphabet and must not start with a digit.
+
+        - id = (letter|"_") { (letter|digit|"_") }
+
+    - Constants:
+
+        - It is possible to make constants out of the i64, chr and string types.
+
+        - i64_const = "0" | [sign] nz_digit {digit} 
+                      (* or realistically, "0" | [sign] nz_digit [digit] [digit] [digit] ... (15 more times) *)
+
+        - string_const = """ { (letter|digit|symbols|whitespaces) } """

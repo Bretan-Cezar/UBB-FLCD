@@ -1,0 +1,43 @@
+Syntax:
+
+    const = i64_const | chr_const | string_const
+
+    mnd_white = (" " | "\t") { (" " | "\t") } 
+
+    opt_white = { (" " | "\t") } 
+
+    primitive_types = ("i64" | "string")
+
+    comment =  "<%" {any_sequence_of_ascii_characters_that_does_not_contain_the_%>_subsequence} "%>"
+
+    rel_op = "==" | "!=" | "<" | "<=" | ">" | ">="
+    
+    arithm_op = "+" | "-" | "*" | "/" | "**" | "//" | "%"
+
+    val_expr = [val_expr opt_white arithm_op opt_white] (id | const)
+
+    rel_expr = val_expr opt_white rel_op opt_white val_expr 
+
+    logical_expr = [logical_expr opt_white ("&&" | "||") opt_white] rel_expr
+
+    id_list = [ id_list "," opt_white ] id
+
+    const_list = [ const_list "," opt_white ] const
+
+    list = [ list "," opt_white ] val_expr
+
+    decl_stmt = primitive_types mnd_white id_list [ opt_white "=" opt_white list ] ("\n" | EOF)
+
+    array_decl_stmt = primitive_types "[]" mnd_white id [ opt_white "=" opt_white "[" const_list "]" ] ("\n" | EOF)
+
+    assign_stmt = id_list opt_white "=" opt_white list ("\n" | EOF)
+
+    io_stmt = ("clread" | "clwrite") mnd_white list ("\n" | EOF)    
+
+    cond_stmt = "if" opt_white "(" opt_white rel_expr opt_white ")" {whitespaces} "{" {whitespaces} stmt {whitespaces} "}" 
+
+    loop_stmt = "while" opt_white "(" opt_white rel_expr opt_white ")" {whitespaces} "{"  {whitespaces} stmt {whitespaces} "}"
+
+    stmt = (decl_stmt | array_decl_stmt | assign_stmt | io_stmt | cond_stmt | loop_stmt)
+
+    program = {stmt}  
