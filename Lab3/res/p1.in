@@ -1,0 +1,18 @@
+i64 n1, n2, n3
+
+clread n1, n2, n3
+
+if (n1 > n2 && n1 > n3) {
+
+    clwrite "The maximum number is: ", n1, "\n"
+}
+
+if (n2 > n1 && n2 > n3) {
+
+    clwrite "The maximum number is: ", n2, "\n"
+}
+
+if (n1 < n3 && n2 < n3) {
+
+    clwrite "The maximum number is: ", n3, "\n"
+}

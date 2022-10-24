@@ -16,7 +16,7 @@ Lexic:
 
         - Separators: "{" ; "}" ; "[" ; "]" ; "(" ; ")" ; "," ; "\n" (newline) ; " " (space); "\t" (horizontal tab)
 
-        - Reserved words: i64, string, immut, if, else, while, clread, clwrite
+        - Reserved words: i64, string, if, else, while, clread, clwrite
 
     - Ground rules:
 
@@ -38,7 +38,7 @@ Lexic:
 
     - Constants:
 
-        - It is possible to make constants out of the i64, chr and string types.
+        - It is possible to make constants out of the i64 and string types.
 
         - i64_const = "0" | [sign] nz_digit {digit} 
                       (* or realistically, "0" | [sign] nz_digit [digit] [digit] [digit] ... (15 more times) *)
