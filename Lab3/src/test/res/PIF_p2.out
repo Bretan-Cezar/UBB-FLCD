@@ -1,0 +1,167 @@
+PIF{
+	PIFEntry{ Token="i64"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token=","; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token=","; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="result"; Type="3"; Hash=671; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clread"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="if"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="<"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="1"; Type="4"; Hash=1; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="The given number is not prime.\n"; Type="5"; Hash=2981; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="else"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="if"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="2"; Type="4"; Hash=2; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="The given number is prime.\n"; Type="5"; Hash=2612; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="else"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="result"; Type="3"; Hash=671; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="1"; Type="4"; Hash=1; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="if"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="%"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="2"; Type="4"; Hash=2; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="0"; Type="4"; Hash=0; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="result"; Type="3"; Hash=671; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="0"; Type="4"; Hash=0; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="else"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="3"; Type="4"; Hash=3; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="while"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token="<"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="/"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="2"; Type="4"; Hash=2; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="if"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
+	PIFEntry{ Token="%"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="0"; Type="4"; Hash=0; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="result"; Type="3"; Hash=671; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="0"; Type="4"; Hash=0; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="d"; Type="3"; Hash=100; Index=0 }
+	PIFEntry{ Token="+"; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="2"; Type="4"; Hash=2; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="if"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="result"; Type="3"; Hash=671; Index=0 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="="; Type="1"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="1"; Type="4"; Hash=1; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="The given number is prime.\n"; Type="5"; Hash=2612; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="else"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="{"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="The given number is not prime.\n"; Type="5"; Hash=2981; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="}"; Type="6"; Hash=-1; Index=-1 }
+}

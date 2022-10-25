@@ -1,0 +1,5 @@
+STWrapper{
+	IDs: SymbolTable{ (hash=159; index=0; symbol=n1); (hash=160; index=0; symbol=n2); (hash=161; index=0; symbol=n3);  }
+	IntConstants: SymbolTable{  }
+	StringConstants: SymbolTable{ (hash=202; index=0; symbol=\n); (hash=2110; index=0; symbol=The maximum number is: );  }
+}

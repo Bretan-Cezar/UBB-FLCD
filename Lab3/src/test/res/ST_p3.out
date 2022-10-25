@@ -1,0 +1,5 @@
+STWrapper{
+	IDs: SymbolTable{ (hash=97; index=0; symbol=a); (hash=105; index=0; symbol=i); (hash=110; index=0; symbol=n); (hash=341; index=0; symbol=sum);  }
+	IntConstants: SymbolTable{ (hash=0; index=0; symbol=0); (hash=1; index=0; symbol=1);  }
+	StringConstants: SymbolTable{ (hash=235; index=0; symbol=n = ); (hash=560; index=0; symbol=Input ); (hash=699; index=0; symbol=Average); (hash=796; index=0; symbol= numbers);  }
+}

@@ -28,7 +28,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 	var m0, m1, m2, m3, m4, m5, m6, merr, tok []byte
 
-	var line, column int
+	line, column := 1, 1
 
 	// Matches newline characters
 	reEndl := regexp.MustCompile(`((\n+)|((\r\n)+)|(\r+))`)
@@ -40,7 +40,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 	reOp := regexp.MustCompile(`(=)|(\+)|(-)|(\*)|(\/)|(%)|(\*\*)|(==)|(<)|(<=)|(>)|(>=)|(\|\|)|(&&)`)
 
 	// Matches reserved words
-	reKw := regexp.MustCompile(`(if)|(else)|(while)|(clread )|(clwrite )|(i64 )|(string )`)
+	reKw := regexp.MustCompile(`(if)|(else)|(while)|(clread)|(clwrite)|(i64)|(string)`)
 
 	// Matches identifiers
 	reId := regexp.MustCompile(`[a-zA-Z_][a-zA-Z0-9_]{0,255}`)
@@ -72,7 +72,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 				line += len(m0)
 			}
 
-			column = 0
+			column = 1
 
 			buf = buf[len(m0):]
 
@@ -110,14 +110,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 			column += len(m2)
 
-			if m2[len(m2)-1] == ' ' {
-
-				tok = buf[:len(m2)-1]
-
-			} else {
-
-				tok = buf[:len(m2)]
-			}
+			tok = buf[:len(m2)]
 
 			buf = buf[len(m2):]
 

@@ -1,0 +1,33 @@
+The PIFEntry structure contains information about each token inserted in the PIF list:
+
+    - the token itself
+    - its lexical type (0 = ENDL; 1 = OPERATOR; 2 = KEYWORD; 3 = ID; 4 = INT_CONST; 5 = STR_CONST; 6 = SEPARATOR)
+    - the token's hash
+    - the position of the token of the list of the corresponding hash slot in the ST
+
+The STWrapper structure contains a symbol table for identifiers, one for integer constants, and one for string constants.
+
+The Scanner is the Scan(file) function does the following things in order:
+
+    - Reads the file with the filepath *file* (max. 128 KB)
+
+    - Until EOF has been reached:
+
+        > Checks for ENDL characters, and even if multiple are present, a single ENDL is being inserted in PIF.
+
+        > Checks for trailing whitespaces, and ignores them
+
+        > Checks if the next token is an operator is a keyword, a separator or an operator, then inserts it in the PIF,
+          along with its lexical type, and -1 as their hash and index.
+
+        > Checks if the next token is an identifier, if it wasn't defined before in the ST, we define it now.
+          Afterwards, we insert it in the PIF with lexical type 3 (= ID), along with its hash and index.
+
+        > Checks if the next token is an integer constant, if it wasn't defined before in the ST, we define it now.
+          Afterwards, we insert it in the PIF with lexical type 4 (= INT_CONST), along with its hash and index.
+
+        > Checks if the next token is a string constant, if it wasn't defined before in the ST, we define it now.
+          Afterwards, we insert it in the PIF with lexical type 5 (= STR_CONST), along with its hash and index.
+
+        > If the next token is none of the above, the function returns an error containing the line and column
+          where the token is placed in the file, and the token at fault.

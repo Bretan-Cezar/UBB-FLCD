@@ -1,0 +1,5 @@
+STWrapper{
+	IDs: SymbolTable{ (hash=100; index=0; symbol=d); (hash=110; index=0; symbol=n); (hash=671; index=0; symbol=result);  }
+	IntConstants: SymbolTable{ (hash=0; index=0; symbol=0); (hash=1; index=0; symbol=1); (hash=2; index=0; symbol=2); (hash=3; index=0; symbol=3);  }
+	StringConstants: SymbolTable{ (hash=2612; index=0; symbol=The given number is prime.\n); (hash=2981; index=0; symbol=The given number is not prime.\n);  }
+}
