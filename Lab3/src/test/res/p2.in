@@ -1,0 +1,46 @@
+i64 n, d, result
+
+clread n
+
+if (n <= 1) {
+
+    clwrite "The given number is not prime.\n"
+}
+else {
+
+    if (n == 2) {
+
+        clwrite "The given number is prime.\n"
+    }
+    else {
+
+        result = 1
+
+        if (n % 2 == 0) {
+
+            result = 0
+        }
+        else {
+
+            d = 3
+
+            while (d <= n / 2) {
+
+                if (n % d == 0) {
+
+                    result = 0
+                }
+                d = d + 2
+            }
+        }
+
+        if (result == 1) {
+
+            clwrite "The given number is prime.\n"
+        }
+        else {
+
+            clwrite "The given number is not prime.\n"
+        }
+    }
+}

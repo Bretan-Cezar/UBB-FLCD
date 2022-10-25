@@ -14,47 +14,64 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 	buf = make([]byte, 131072) // max. 128 kb source file
 
+	_, err = f.Seek(0, 0)
+
+	if err != nil {
+		return nil, st, err
+	}
+
 	_, err = f.Read(buf)
 
 	if err != nil {
-		return nil, STWrapper{}, err
+		return nil, st, err
 	}
 
-	var m0, m1, m2, m3, m4, m5, m6, tok []byte
+	var m0, m1, m2, m3, m4, m5, m6, merr, tok []byte
 
 	var line, column int
 
 	// Matches newline characters
-	reEndl, _ := regexp.Compile(`((\n+)|(\r\n+))`)
+	reEndl := regexp.MustCompile(`((\n+)|((\r\n)+)|(\r+))`)
 
 	// Matches whitespaces at the beginning of the line
-	reIndent, _ := regexp.Compile(`^[ \t]+`)
+	reIndent := regexp.MustCompile(`(?m)^[ \t]+`)
 
 	// Matches operators
-	reOp, _ := regexp.Compile(`(=)|(\+)|(-)|(\*)|(\/)|(\*\*)|(\/\/)|(==)|(<)|(<=)|(>)|(>=)|(\|\|)|(&&)`)
+	reOp := regexp.MustCompile(`(=)|(\+)|(-)|(\*)|(\/)|(%)|(\*\*)|(==)|(<)|(<=)|(>)|(>=)|(\|\|)|(&&)`)
 
 	// Matches reserved words
-	reKw, _ := regexp.Compile(`(if)|(else)|(while)|(clread)|(clwrite)|(i64)|(string)`)
+	reKw := regexp.MustCompile(`(if)|(else)|(while)|(clread )|(clwrite )|(i64 )|(string )`)
 
 	// Matches identifiers
-	reId, _ := regexp.Compile(`[a-zA-Z_][a-zA-Z0-9_]{0,255}`)
+	reId := regexp.MustCompile(`[a-zA-Z_][a-zA-Z0-9_]{0,255}`)
 
 	// Matches integer constants
-	reIc, _ := regexp.Compile(`(0)|(-?[1-9][0-9]{0,18})`)
+	reIc := regexp.MustCompile(`(0)|(-?[1-9][0-9]{0,18})`)
 
 	// Matches string constants
-	reSc, _ := regexp.Compile(`"[^"]*"`)
+	reSc := regexp.MustCompile(`"[^"]*"`)
 
-	// Matches separators: parentheses, brackets, braces, commas, whitespaces that are not for indentation purpose
-	reSep, _ := regexp.Compile(`(\()|(\))|(\[)|(\])|(\{)|(\})|(,)|([ \t]+)`)
+	// Matches separators: parentheses, brackets, braces, and commas
+	reSep := regexp.MustCompile(`(\()|(\))|(\[)|(\])|(\{)|(})|(,)`)
 
-	for len(buf) != 0 {
+	// Matches the next token, this is used when none of the above are matched
+	reErr := regexp.MustCompile(`(?m)([^ \n\t]+ )|.+$`)
+
+	for buf[0] != uint8(0) {
 
 		m0 = reEndl.Find(buf)
 
-		if strings.Index(string(buf), string(m0)) == 0 {
+		if m0 != nil && strings.Index(string(buf), string(m0)) == 0 {
 
-			line += len(m0)
+			if strings.Count(string(m0), "\r\n") > 0 {
+
+				line += strings.Count(string(m0), "\r\n")
+
+			} else {
+
+				line += len(m0)
+			}
+
 			column = 0
 
 			buf = buf[len(m0):]
@@ -64,9 +81,9 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 		m0 = reIndent.Find(buf)
 
-		if strings.Index(string(buf), string(m0)) == 0 {
+		if m0 != nil && strings.Index(string(buf), string(m0)) == 0 {
 
-			column += len(m0) //+ 2*strings.Count(string(m0), "\t")
+			column += len(m0)
 
 			buf = buf[len(m0):]
 		}
@@ -78,7 +95,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 		m5 = reSc.Find(buf)
 		m6 = reSep.Find(buf)
 
-		if strings.Index(string(buf), string(m1)) == 0 {
+		if m1 != nil && strings.Index(string(buf), string(m1)) == 0 {
 
 			column += len(m1)
 
@@ -87,16 +104,28 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 			pif = append(pif, PIFEntry{string(tok), OPERATOR, -1, -1})
 
-		} else if strings.Index(string(buf), string(m2)) == 0 {
+			tok = []byte("")
+
+		} else if m2 != nil && strings.Index(string(buf), string(m2)) == 0 {
 
 			column += len(m2)
 
-			tok = buf[:len(m2)]
+			if m2[len(m2)-1] == ' ' {
+
+				tok = buf[:len(m2)-1]
+
+			} else {
+
+				tok = buf[:len(m2)]
+			}
+
 			buf = buf[len(m2):]
 
 			pif = append(pif, PIFEntry{string(tok), KEYWORD, -1, -1})
 
-		} else if strings.Index(string(buf), string(m3)) == 0 {
+			tok = []byte("")
+
+		} else if m3 != nil && strings.Index(string(buf), string(m3)) == 0 {
 
 			column += len(m3)
 
@@ -130,7 +159,9 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 			pif = append(pif, PIFEntry{string(tok), ID, hash, index})
 
-		} else if strings.Index(string(buf), string(m4)) == 0 {
+			tok = []byte("")
+
+		} else if m4 != nil && strings.Index(string(buf), string(m4)) == 0 {
 
 			column += len(m4)
 
@@ -168,7 +199,9 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 			pif = append(pif, PIFEntry{string(tok), INT_CONST, hash, index})
 
-		} else if strings.Index(string(buf), string(m5)) == 0 {
+			tok = []byte("")
+
+		} else if m5 != nil && strings.Index(string(buf), string(m5)) == 0 {
 
 			column += len(m5)
 
@@ -202,18 +235,29 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 			pif = append(pif, PIFEntry{string(tok), STR_CONST, hash, index})
 
-		} else if strings.Index(string(buf), string(m6)) == 0 {
+			tok = []byte("")
 
-			column += len(m6) //+ 2*strings.Count(string(m0), "\t")
+		} else if m6 != nil && strings.Index(string(buf), string(m6)) == 0 {
+
+			column += len(m6)
 
 			tok = buf[:len(m6)]
 			buf = buf[len(m6):]
 
 			pif = append(pif, PIFEntry{string(tok), SEPARATOR, -1, -1})
 
+			tok = []byte("")
+
+		} else if buf[0] == uint8(0) {
+
+			continue
+
 		} else {
 
-			return nil, st, errors.New("lexical error at " + strconv.Itoa(line) + ":" + strconv.Itoa(column))
+			merr = reErr.Find(buf)
+
+			return nil, st, errors.New("lexical error at " + strconv.Itoa(line) + ":" + strconv.Itoa(column) +
+				" - unexpected token: " + string(merr))
 		}
 	}
 

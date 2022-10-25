@@ -2,6 +2,7 @@ package model
 
 import (
 	"errors"
+	"fmt"
 )
 
 type SymbolTable[V Variant] [SIZE][]V
@@ -83,4 +84,33 @@ func (st *SymbolTable[V]) FindByHashAndIndex(hash int, index int) (V, error) {
 	}
 
 	return st[hash][index], nil
+}
+
+func (st *SymbolTable[V]) String() (str string) {
+
+	str = "SymbolTable{ "
+
+	for h := 0; h < 4096; h++ {
+
+		if len(st[h]) != 0 {
+
+			for i, sym := range st[h] {
+
+				sym_i, ok := any(sym).(int64)
+
+				if ok {
+
+					str += fmt.Sprintf("(hash=%d; index=%d; symbol=%d); ", h, i, sym_i)
+
+				} else {
+
+					str += fmt.Sprintf("(hash=%d; index=%d; symbol=%s); ", h, i, sym)
+				}
+			}
+		}
+	}
+
+	str += " }"
+
+	return
 }

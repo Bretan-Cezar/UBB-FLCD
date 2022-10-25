@@ -88,10 +88,3 @@ func IsDeclarationKeyword(s string) bool {
 
 	return s == "i64" || s == "string" || s == "i64[]" || s == "string[]"
 }
-
-type PIFEntry struct {
-	Token string
-	Type  uint8
-	Hash  int
-	Index int
-}
