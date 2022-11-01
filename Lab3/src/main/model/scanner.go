@@ -40,7 +40,7 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 	reOp := regexp.MustCompile(`(=)|(\+)|(-)|(\*)|(\/)|(%)|(\*\*)|(==)|(<)|(<=)|(>)|(>=)|(\|\|)|(&&)`)
 
 	// Matches reserved words
-	reKw := regexp.MustCompile(`(if)|(else)|(while)|(clread)|(clwrite)|(i64)|(string)`)
+	reKw := regexp.MustCompile(`(if( |\())|(else( |\{))|(while( |\())|(clread )|(clwrite )|(i64 )|(string )|(i64\[\] )|(string\[\] )`)
 
 	// Matches identifiers
 	reId := regexp.MustCompile(`[a-zA-Z_][a-zA-Z0-9_]{0,255}`)
@@ -108,11 +108,11 @@ func Scan(f *os.File) (pif []PIFEntry, st STWrapper, err error) {
 
 		} else if m2 != nil && strings.Index(string(buf), string(m2)) == 0 {
 
-			column += len(m2)
+			column += len(m2) - 1
 
-			tok = buf[:len(m2)]
+			tok = buf[:len(m2)-1]
 
-			buf = buf[len(m2):]
+			buf = buf[len(m2)-1:]
 
 			pif = append(pif, PIFEntry{string(tok), KEYWORD, -1, -1})
 

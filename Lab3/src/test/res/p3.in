@@ -1,9 +1,11 @@
 i64 n, a, sum
 
+string[] str_arr
+
 clwrite "n = "
 clread n
 
-clwrite "Input ", n, " numbers"
+clwrite("Input ", n, " numbers")
 
 i64 i = 0
 

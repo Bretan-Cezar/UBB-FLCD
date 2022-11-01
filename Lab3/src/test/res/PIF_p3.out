@@ -7,6 +7,10 @@ PIF{
 	PIFEntry{ Token="sum"; Type="3"; Hash=341; Index=0 }
 	PIFEntry{ Token="
 "; Type="0"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="string[]"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="str_arr"; Type="3"; Hash=765; Index=0 }
+	PIFEntry{ Token="
+"; Type="0"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="n = "; Type="5"; Hash=235; Index=0 }
 	PIFEntry{ Token="
@@ -15,12 +19,14 @@ PIF{
 	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
 	PIFEntry{ Token="
 "; Type="0"; Hash=-1; Index=-1 }
-	PIFEntry{ Token="clwrite"; Type="2"; Hash=-1; Index=-1 }
+	PIFEntry{ Token="clwrite"; Type="3"; Hash=762; Index=0 }
+	PIFEntry{ Token="("; Type="6"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="Input "; Type="5"; Hash=560; Index=0 }
 	PIFEntry{ Token=","; Type="6"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="n"; Type="3"; Hash=110; Index=0 }
 	PIFEntry{ Token=","; Type="6"; Hash=-1; Index=-1 }
 	PIFEntry{ Token=" numbers"; Type="5"; Hash=796; Index=0 }
+	PIFEntry{ Token=")"; Type="6"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="
 "; Type="0"; Hash=-1; Index=-1 }
 	PIFEntry{ Token="i64"; Type="2"; Hash=-1; Index=-1 }
