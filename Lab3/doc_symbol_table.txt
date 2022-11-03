@@ -1,0 +1,29 @@
+I've taken the approach of implementing the ST with 3 instances of a generic hash table,
+with 4096 hash slots, and a dynamic array on each slot:
+one for IDs, one for integer constants, and one for string constants.
+
+h(x) = {  x % 4096                                 , if x is an int
+       {  (sum of ascii codes of all chars) % 4096 , if x is a string
+
+V = int64 | string
+
+
+GetHashAndIndex(value1 V) returns a pair of integers representing:
+    1. The hash of value1
+    2. The position value1 takes on the array on hash slot h(value1)
+
+Complexity: theta(1) amortized
+
+
+SetSymbol(value1 V) inserts value1 at the end of the array on
+hash slot h(value1) and returns a pair of integers representing:
+    1. The hash of value1
+    2. The position value1 takes on the array on hash slot h(value1) after insertion
+
+
+HasValue(value1 V) checks whether value1 exists in the table by computing h(value1),
+and then looking in the array on hash slot h(value1). If value1 is found, it returns true, false otherwise.
+
+
+FindByHashAndIndex(hash int, index int) returns the value of type V that
+takes position *index* on the array on hash slot *hash*.
