@@ -1,0 +1,14 @@
+The FiniteAutomaton class expresses a M = (Q,Σ,δ,p,F) finite automaton.
+The Transition class expresses a δ(p,a) = q transition.
+
+The ReadFA function reads the 5 properties of a finite automaton from a file and sets them into the object.
+The parseTransitions and validateTransitions functions are helpers for marshalling into valid Transition objects.
+
+The Accepts function checks if all the terminals within a sequence can be found in the FA alphabet.
+If there is a character that can't be found, false is returned.
+Then, we apply transitions sequentially. If there is no transition defined at a point in the sequence,
+false is returned. If the final state can't be found in the FA set of final states, false is returned.
+True is returned otherwise.
+
+The FA.in file should be formatted like so:
+
