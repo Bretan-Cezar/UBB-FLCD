@@ -1,5 +1,5 @@
 states=p,q,r,s
-alphabet=a,b,c
-transitions=(p a q),(p b r),(p c s),(q a r),(q b s),(q c p),(r a s),(r b p),(r c q),(s a p),(s b q),(s c r)
+alphabet=1,2,3
+transitions=(p 1 q),(p 2 r),(p 3 s),(q 1 r),(q 2 s),(q 3 p),(r 1 s),(r 2 p),(r 3 q),(s 1 p),(s 2 q),(s 3 r)
 initialState=p
 finalStates=q,s

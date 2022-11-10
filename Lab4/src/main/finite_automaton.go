@@ -27,7 +27,7 @@ func (tr Transition) String() string {
 
 // FiniteAutomaton
 /*
- *  Let M = (Q,Σ,δ,p,F)
+ *  Let M = (Q,Σ,δ,p,F).
  *  Q = States
  *  Σ = Alphabet
  *  δ = Transitions

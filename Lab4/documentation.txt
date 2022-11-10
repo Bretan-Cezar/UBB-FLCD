@@ -12,3 +12,23 @@ True is returned otherwise.
 
 The FA.in file should be formatted like so:
 
+    states_list = [states_list ","] state
+
+    states = "states=" states_list
+
+    alphabet_list = [alphabet_list ","] terminal
+
+    alphabet = "alphabet=" alphabet_list
+
+    transition = "(" state " " terminal " " state ")"
+
+    transition_list = [transition_list ","] transition
+
+    transitions = "transitions=" transition_list
+
+    initialState = "initialState=" state
+
+    finalStates = "finalStates=" states_list
+
+    FA = states "\n" alphabet "\n" transitions "\n" initialStates "\n" finalStates
+
