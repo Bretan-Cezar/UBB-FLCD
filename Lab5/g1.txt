@@ -1,0 +1,4 @@
+nonterminals=S
+alphabet=a b c
+productions=S->a S b S|a S|c
+initial_state=S
